@@ -1,5 +1,6 @@
 import { FaHeart } from "react-icons/fa";
 import List from "../assets/constants";
+import { Link } from "react-router-dom";
 
 import React, { useState } from 'react';
 
@@ -21,13 +22,16 @@ const Journal = () => {
                 {booksToDisplay.map((book, index) => {
                     return (
                         <div key={index} className="flex border rounded-lg shadow-lg p-6 w-[100%] gap-6 transition-transform duration-300 hover:shadow-xl hover:scale-105">
-                            <div className="w-1/2">
-                                <img
-                                    className="w-full h-auto object-cover rounded-lg transition-transform duration-300 hover:scale-105"
-                                    src={book.img}
-                                    alt={book.title}
-                                />
-                            </div>
+                           import { Link } from 'react-router-dom';
+
+<Link to={`/Single/${book.id}`} className="w-1/2">
+    <img
+        className="w-full h-auto object-cover rounded-lg transition-transform duration-300 hover:scale-105"
+        src={book.img}
+        alt={book.title}
+    />
+</Link>
+
 
                             <div className="w-1/2 flex flex-col justify-between">
                                 <div>
