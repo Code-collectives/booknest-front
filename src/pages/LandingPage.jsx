@@ -1,14 +1,10 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import Hero from '../components/Hero'
-import Footer from '../components/Footer'
-
+import LayoutWrapper from '../components/LayoutWrapper'
 function LandingPage() {
   return (
     <div>
-      <Navbar />
-      <Hero />
-      <Footer/>
+       <LayoutWrapper showHero={true}>
+      
+      </LayoutWrapper>
     </div>
   )
 }

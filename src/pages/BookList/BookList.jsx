@@ -1,10 +1,15 @@
-import Bookdetails from "../../components/Bookdetails"
+import Footer from "../../components/Footer"
+import ListView from "../../components/ListView"
+import Navbar from "../../components/Navbar"
+
 
 
 function BookList() {
   return (
     <div>
-      <Bookdetails />
+      <Navbar />
+      <ListView />
+      <Footer />
     </div>
   )
 }

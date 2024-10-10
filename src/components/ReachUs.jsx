@@ -1,7 +1,12 @@
+import Footer from "./Footer";
+import Navbar from "./Navbar";
+
 const ContactForm = () => {
     return (
+      
       <div>
-        <div className="container mt-10 mx-auto text-center">
+        <Navbar />
+        <div className="container mt-[10%] mx-auto text-center">
           <h2 className="text-4xl font-bold">Contact Us</h2>
           <p className="mt-4 text-gray-600">Have questions? Reach out to us at any time.</p>
         </div>
@@ -30,6 +35,7 @@ const ContactForm = () => {
             </button>
           </form>
         </div>
+        <Footer />
       </div>
     );
   };

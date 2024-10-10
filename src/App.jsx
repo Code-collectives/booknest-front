@@ -6,6 +6,8 @@ import LandingPage from './pages/LandingPage'
 import ContactForm from './components/ReachUs'
 import AboutUs from './pages/AboutUs/AboutUs'
 import BookList from './pages/BookList/BookList'
+import ListDetail from './pages/ListDetail'
+import AddBook from './pages/Addbook/AddBook'
 function App() {
   const router = createBrowserRouter([
     {path:"/",
@@ -19,6 +21,12 @@ function App() {
     },
     {path:"/viewlist",
       element:<BookList />
+    },
+    {path:"/listdetail",
+      element:<ListDetail/>
+    },
+    {path:"/addbook",
+      element:<AddBook/>
     }
   ])
 

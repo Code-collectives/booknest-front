@@ -6,12 +6,12 @@ const Book = () => {
     const [currentPage, setCurrentPage] = useState(0);
     const booksPerPage = 8;
 
-    // Calculate the start and end index of the books to display
+ 
     const startIndex = currentPage * booksPerPage;
     const endIndex = startIndex + booksPerPage;
     const booksToDisplay = List.BOOKS.slice(startIndex, endIndex);
 
-    // Calculate the total number of pages
+    
     const totalPages = Math.ceil(List.BOOKS.length / booksPerPage);
 
     return (
@@ -25,7 +25,7 @@ const Book = () => {
                                     <img
                                         className="w-[100%] h-[120%] transition-opacity duration-300 hover:opacity-90"
                                         src={book.img}
-                                        alt={book.title} // Improved alt attribute
+                                        alt={book.title} 
                                     />
                                 </div>
                                 <span className="text-2xl text-center mt-5">{book.author}</span>
@@ -37,8 +37,6 @@ const Book = () => {
                     );
                 })}
             </div>
-
-            {/* Pagination Controls */}
             <div className="flex justify-between items-center mt-6">
                 <button
                     onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 0))}
