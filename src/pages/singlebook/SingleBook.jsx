@@ -38,12 +38,31 @@ const BookDetails = () => {
         <div className="max-w-md mx-auto p-4">
             {book ? (
                 <>
-                    <h1 className="text-2xl font-bold">{book.title}</h1>
-                    <p><strong>Author:</strong> {book.author}</p>
-                    <p><strong>Genre:</strong> {book.genre}</p>
-                    <p><strong>Description:</strong> {book.description}</p>
-                    <p><strong>Publisher:</strong> {book.publisher}</p>
-                    <p><strong>Year:</strong> {book.year}</p>
+               <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-6">
+  {/* Image Section */}
+  <div className="lg:w-1/2">
+    <img src={book.img_url} alt={book.title} className="w-full rounded-md shadow-md" />
+  </div>
+
+  {/* Book Details Section */}
+  <div className="lg:w-1/2">
+    <h1 className="text-4xl font-bold text-gray-900">{book.title}</h1>
+    <div className="mt-2 flex items-center">
+   </div>
+
+    <p className="mt-4 text-gray-700">{book.description}</p>
+    
+    <div className="mt-6 space-y-2 text-gray-600">
+      <p><strong>Author:</strong> {book.author.name}</p>
+      <p><strong>Genre:</strong> {book.genre}</p>
+      <p><strong>Publisher:</strong> {book.publisher}</p>
+      <p><strong>Year:</strong> {book.year}</p>
+    </div>
+
+   
+  </div>
+</div>
+
                 </>
             ) : (
                 <p>Book not found</p>

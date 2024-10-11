@@ -10,6 +10,7 @@ const Children = () => {
         const response = await axios.get(`${BASE_URL}/books`);
         // Use .slice(-4) to get the last 4 books from the array
         setBooks(response.data.slice(-4));
+        console.log(response.data)
     };
 
     useEffect(() => {
@@ -36,7 +37,7 @@ const Children = () => {
 
                     <div className="p-4 flex flex-col items-center">
                         <span className="text-2xl text-center font-semibold mt-2">{book.title}</span>
-                        <h1 className="text-center font-bold text-lg mt-1">{book.author}</h1>
+                        <h1 className="text-center font-bold text-lg mt-1">{book.author.name}</h1>
                         <h1 className="text-center text-gray-500 mt-1">{book.genre}</h1>
                         <p className="text-center text-gray-700 mt-2">{book.description}</p>
                         <h1 className="text-center text-gray-500 mt-1">{book.publisher}</h1>

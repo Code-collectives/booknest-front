@@ -78,7 +78,7 @@ const Journal = () => {
                         <div className="w-1/2 flex flex-col justify-between">
                             <div>
                                 <h1 className="text-3xl font-semibold">{book.title}</h1>
-                                <p className="text-lg font-semibold text-gray-800 mt-3">{book.author}</p>
+                                <p className="text-lg font-semibold text-gray-800 mt-3">{book.author.name}</p>
                                 <p className="text-gray-600 mt-3">{book.genre}</p>
                                 <div className="mt-3">
                                     <h1 className="text-md font-medium">{book.description}</h1>
