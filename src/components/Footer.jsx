@@ -19,7 +19,7 @@ const Footer = () => {
         </div>
   
         <div className="border-t border-gray-300 mt-6 pt-4 text-center text-gray-600 text-sm">
-          <p>Copyright © 2024 Boighor. All Rights Reserved.</p>
+          <p>Copyright © 2024 . All Rights Reserved.</p>
         </div>
       </footer>
     );

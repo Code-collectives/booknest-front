@@ -10,6 +10,7 @@ import ListDetail from './pages/ListDetail'
 import AddBook from './pages/Addbook/AddBook'
 import SignUpPage from './pages/Login/SignUpPage'
 import SingleBook from './pages/singlebook/SingleBook'
+import EditForm from './components/EditForm'
 function App() {
   const router = createBrowserRouter([
     {path:"/signup",
@@ -32,6 +33,12 @@ function App() {
     },
     {path:"/single/:id",
       element:<SingleBook/>
+    },
+    {path:"/addbook",
+      element:<AddBook />
+    },
+    {path:"editform/:id",
+      element:<EditForm />
     }
 
   ])

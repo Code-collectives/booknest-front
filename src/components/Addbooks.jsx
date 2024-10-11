@@ -133,11 +133,12 @@ useEffect(()=>{
 
   
   <div className="text-center">
-<button
+    <Link  to="/viewlist"
+
     className="px-6 py-3 bg-yellow-400 text-white rounded-lg font-semibold hover:bg-yellow-500 transition-colors duration-300"
   >
     Submit
-    </button>
+    </Link>
 </div>
 </form>
 

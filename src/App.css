@@ -78,4 +78,10 @@ font-size: 3rem;
 
 
 }
+.edit {
+  background-image: url(./assets/images/editpic.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
 
