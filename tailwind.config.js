@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+    },
+  },
+  variants: {
+    extend: {
+      backdropBlur: ['hover', 'focus'],
+    },
   },
   plugins: [],
 }
