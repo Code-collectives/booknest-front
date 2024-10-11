@@ -115,6 +115,17 @@ const AddBooks = () => {
         </div>
 
         <div>
+          <label htmlFor="publisher" className="block text-lg font-semibold text-gray-700">Publisher</label>
+          <textarea
+            id="publisher"
+            name="publisher"
+            className="mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+           
+            required
+          />
+        </div>
+
+        <div>
           <label htmlFor="publisher-date" className="block text-lg font-semibold text-gray-700">Year</label>
           <input
             type="year"
@@ -124,6 +135,18 @@ const AddBooks = () => {
             required
           />
         </div>
+        <div>
+          <label htmlFor="img_url" className="block text-lg font-semibold text-gray-700">image</label>
+          <input
+            type="img_url"
+            id="img_url"
+            name="img_url"
+            className="mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            required
+          />
+        </div>
+
+
 
         <div className="text-center">
         <Link
@@ -134,6 +157,8 @@ const AddBooks = () => {
             Submit
           </Link>
         </div>
+
+      
       </form>
     </div>
   );
