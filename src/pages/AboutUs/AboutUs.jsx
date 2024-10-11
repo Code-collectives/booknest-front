@@ -38,7 +38,7 @@ function AboutUs() {
 
   {/* Team Members Grid */}
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
-    <MemberWrapper image="src/assets/images/amanda.png" name="Amanda" role="Back-end Developer" />
+    <MemberWrapper image="../assets/images/amanda.png" name="Amanda" role="Back-end Developer" />
     <MemberWrapper image="src\assets\images\myAi.png" name="Gideon Odoom" role="Back-end Developer" />
     <MemberWrapper image="src/assets/images/chel.png" name="Recheal" role="Front-end Developer" />
     <MemberWrapper image="src/assets/images/esi.png" name="Ewurasi Ayanful Nyarkoa" role="Front-end Developer" />
