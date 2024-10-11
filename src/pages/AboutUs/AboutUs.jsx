@@ -1,6 +1,14 @@
-import Footer from "../../components/Footer"
-import MemberWrapper from "../../components/MemberWrapper"
-import Navbar from "../../components/Navbar"
+import Footer from "../../components/Footer";
+import MemberWrapper from "../../components/MemberWrapper";
+import Navbar from "../../components/Navbar";
+import amandaImage from 'src/assets/images/amanda.png';
+import myAiImage from 'src/assets/images/myAi.png';
+import chelImage from 'src/assets/images/chel.png';
+import esiImage from 'src/assets/images/esi.png';
+import img2 from 'src/assets/images/img2.png';
+import img4 from 'src/assets/images/img4.png';
+
+
 
 function AboutUs() {
   return (
@@ -15,7 +23,7 @@ function AboutUs() {
 {/* Our Mission Section */}
 <div className="flex flex-col lg:flex-row justify-around items-center mt-10 space-y-8 lg:space-y-0">
   <div className="lg:w-1/2 flex justify-center">
-    <img src="src/assets/images/img2.png" alt="About Us" className="rounded-lg shadow-lg max-w-full lg:max-w-md" />
+    <img src={img2} alt="About Us" className="rounded-lg shadow-lg max-w-full lg:max-w-md" />
   </div>
   
   <div className="lg:w-1/2 px-4 lg:px-0">
@@ -38,17 +46,17 @@ function AboutUs() {
 
   {/* Team Members Grid */}
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
-    <MemberWrapper image="../assets/images/amanda.png" name="Amanda" role="Back-end Developer" />
-    <MemberWrapper image="src\assets\images\myAi.png" name="Gideon Odoom" role="Back-end Developer" />
-    <MemberWrapper image="src/assets/images/chel.png" name="Recheal" role="Front-end Developer" />
-    <MemberWrapper image="src/assets/images/esi.png" name="Ewurasi Ayanful Nyarkoa" role="Front-end Developer" />
+    <MemberWrapper image={amandaImage} name="Amanda" role="Back-end Developer" />
+    <MemberWrapper image={myAiImage} name="Gideon Odoom" role="Back-end Developer" />
+    <MemberWrapper image={chelImage} name="Recheal" role="Front-end Developer" />
+    <MemberWrapper image={esiImage} name="Ewurasi Ayanful Nyarkoa" role="Front-end Developer" />
   </div>
 </div>
 
 {/* Our Services Section */}
 <div className="flex flex-col lg:flex-row justify-around items-center mt-20 space-y-8 lg:space-y-0">
   <div className="lg:w-1/2 flex justify-center">
-    <img src="src/assets/images/img4.png" alt="Our Services" className="rounded-lg shadow-lg max-w-full lg:max-w-md" />
+    <img src={img4} alt="Our Services" className="rounded-lg shadow-lg max-w-full lg:max-w-md" />
   </div>
 
   <div className="lg:w-1/2 px-4 lg:px-0">

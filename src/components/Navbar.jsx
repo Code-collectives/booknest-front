@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { BsTelephonePlusFill } from 'react-icons/bs';
+import pageLogo from 'src/assets/images/pagelogo.png';
+
 
 
 const Navbar = () => {
@@ -10,7 +12,7 @@ const Navbar = () => {
         <div className="flex items-center">
           <img 
             className="h-[80px] w-auto" 
-            src="src/assets/images/pagelogo.png" 
+            src={pageLogo} 
             alt="Logo" 
           />
         </div>
