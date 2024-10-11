@@ -31,7 +31,7 @@ function App() {
     {path:"/listdetail",
       element:<ListDetail/>
     },
-    {path:"/single/:id",
+    {path:"/single/:bookid",
       element:<SingleBook/>
     },
     {path:"/addbook",

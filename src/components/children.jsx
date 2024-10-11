@@ -20,7 +20,7 @@ const Children = () => {
         <>
 
         <div className="mt-10 mb-5 w-[80%] mx-auto">
-            <h1 className="text-4xl font-bold text-gray-800 text-left">Children</h1>
+            <h1 className="text-4xl font-bold text-gray-800 text-left">Non-Fiction</h1>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-[80%] mx-auto mb-40 gap-12 mt-[5%]">

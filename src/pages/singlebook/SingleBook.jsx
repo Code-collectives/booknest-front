@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom'; // For fetching URL parameters
+import { useNavigate, useParams } from 'react-router-dom'; // For fetching URL parameters
 import { BASE_URL } from '../../assets/constants';
 
 const BookDetails = () => {
-    const { id } = useParams(); // Get the book ID from the URL parameters
+    const { bookid } = useParams(); // Get the book ID from the URL parameters
     const [book, setBook] = useState(null); // State to hold the book data
+    const [modelOpen, setModelOpen] = useState(false);
+    const[formData, setFormData] =useState(false)
     const [loading, setLoading] = useState(true); // State for loading indicator
     const [error, setError] = useState(null); // State for error handling
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchBook = async () => {
             try {
-                const response = await axios.get(`${BASE_URL}/books/${id}`); // Make API call
+                const response = await axios.get(`${BASE_URL}/books/${bookid}`); // Make API call
                 setBook(response.data); // Set the book data
             } catch (err) {
                 setError(err.message); // Set error message
@@ -22,7 +25,7 @@ const BookDetails = () => {
         };
 
         fetchBook(); // Call the fetch function
-    }, [id]); // Re-run effect if ID changes
+    }, []); // Re-run effect if ID changes
 
     // Loading state
     if (loading) return <div>Loading...</div>;

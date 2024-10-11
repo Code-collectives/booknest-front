@@ -63,7 +63,7 @@ const Book = () => {
                        
                        {/* Book Image */}
                        <div className="w-full h-64 overflow-hidden rounded-t-lg">
-                           <Link to={`/single/${book.id}`}>
+                           <Link to={`/single/${book._id}`}>
                                <img
                                    className="w-full h-full object-cover transition-opacity duration-300 hover:opacity-90"
                                    src={book.img_url}
@@ -84,7 +84,7 @@ const Book = () => {
 
                        {/* Edit and Delete Links */}
                        <div className="flex justify-center gap-x-4 mt-4 mb-2">
-                           <Link to={`/editform/${book.id}`} 
+                           <Link to={`/editform/${book._id}`} 
                                className="text-blue-500 hover:text-blue-700 transition-colors">
                                Edit
                            </Link>
