@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { BASE_URL } from '../assets/constants';
+import { Link } from 'react-router-dom';
 
 const AddBooks = () => {
   const { id } = useParams();
@@ -125,12 +126,13 @@ const AddBooks = () => {
         </div>
 
         <div className="text-center">
-          <button
+        <Link
+    to="/viewlist"  
             type="submit"
             className="px-6 py-3 bg-yellow-400 text-white rounded-lg font-semibold hover:bg-yellow-500 transition-colors duration-300"
           >
             Submit
-          </button>
+          </Link>
         </div>
       </form>
     </div>
