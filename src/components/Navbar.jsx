@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { BsTelephonePlusFill } from 'react-icons/bs';
-import pageLogo from 'src/assets/images/pagelogo.png';
+import pageLogo from "../assets/images/pagelogo.png";
 
 
 

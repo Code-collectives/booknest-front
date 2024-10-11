@@ -1,12 +1,12 @@
 import Footer from "../../components/Footer";
 import MemberWrapper from "../../components/MemberWrapper";
 import Navbar from "../../components/Navbar";
-import amandaImage from 'src/assets/images/amanda.png';
-import myAiImage from 'src/assets/images/myAi.png';
-import chelImage from 'src/assets/images/chel.png';
-import esiImage from 'src/assets/images/esi.png';
-import img2 from 'src/assets/images/img2.png';
-import img4 from 'src/assets/images/img4.png';
+import amandaImage from '../../assets/images/amanda.png';
+import myAiImage from '../../assets/images/myAi.png';
+import chelImage from '../../assets/images/chel.png';
+import esiImage from '../../assets/images/esi.png';
+import img2 from '../../assets/images/img2.png';
+import img4 from '../../assets/images/img4.png';
 
 
 
