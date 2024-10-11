@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { BsTelephonePlusFill } from 'react-icons/bs';
 
+
 const Navbar = () => {
   return (
     <div className="bg-white h-[10vh] fixed w-full top-0 z-20 shadow-md flex items-center">

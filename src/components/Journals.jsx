@@ -1,14 +1,16 @@
 import { FaHeart } from "react-icons/fa";
 import List, { BASE_URL } from "../assets/constants";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import Swal from 'sweetalert2'; 
+
 
 const Journal = () => {
     const [currentPage, setCurrentPage] = useState(0);
     const booksPerPage = 5;
     const [books, setBooks] = useState([]);
+    const navigate= useNavigate(); // Use useHistory for navigation
 
     // Fetch books from API
     const getBooks = async () => {
@@ -27,6 +29,36 @@ const Journal = () => {
 
     // Calculate the total number of pages
     const totalPages = Math.ceil(books.length / booksPerPage);
+
+    // Handle delete operation
+    const handleDelete = async (bookId) => {
+        // Show confirmation dialog
+        const result = await Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Delete',
+            cancelButtonText: 'Cancel'
+        });
+
+        if (result.isConfirmed) {
+            try {
+                await axios.delete(`${BASE_URL}/books/${bookId}`);
+                Swal.fire('Deleted!', 'Your book has been deleted.', 'success'); // Show success message
+                getBooks(); // Refresh the book list after deletion
+            } catch (error) {
+                Swal.fire('Error!', 'There was an error deleting the book.', 'error');
+            }
+        }
+    };
+
+    // Handle edit operation
+    const handleEdit = (book) => {
+        history.push(`/edit/${book.id}`); // Redirect to edit page
+    };
 
     return (
         <>
@@ -56,18 +88,16 @@ const Journal = () => {
                             </div>
 
                             <div className="flex items-center justify-start gap-4 mt-4">
-                           <button
-                               onClick={() => handleEdit(book)}
-                               className="text-blue-500 hover:text-blue-700 transition-colors"
-                           >
+                            <Link to={`/editform/${book.id}`} 
+                               className="text-blue-500 hover:text-blue-700 transition-colors">
                                Edit
-                           </button>
-                           <button
-                               onClick={() => handleDelete(book.id)}
-                               className="text-red-500 hover:text-red-700 transition-colors"
-                           >
-                               Delete
-                           </button>
+                           </Link>
+                                <button
+                                    onClick={() => handleDelete(book.id)}
+                                    className="text-red-500 hover:text-red-700 transition-colors"
+                                >
+                                    Delete
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -96,8 +126,4 @@ const Journal = () => {
     );
 };
 
-
-  
-  
- export  default Journal 
-
+export default Journal;

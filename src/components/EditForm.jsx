@@ -1,126 +1,166 @@
 import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useParams } from 'react-router-dom'; // Import useParams
+import Swal from 'sweetalert2'; // Optional: To show alerts
+import { BASE_URL } from '../assets/constants';
 
 const EditForm = () => {
-    const { id } = useParams(); // Use useParams to extract id
-    const [book, setBook] = useState({
+    const { id } = useParams(); // Get the book ID from the URL
+    const navigate = useNavigate(); // To redirect after edit
+    const [bookData, setBookData] = useState({
         title: '',
         author: '',
         genre: '',
         description: '',
         publisher: '',
         year: '',
+        img_url: ''
     });
+    const [loading, setLoading] = useState(true);
 
-    // Fetch the book details for the given id
+    // Fetch the book details by ID
     useEffect(() => {
         const fetchBook = async () => {
-            const response = await axios.get(`${BASE_URL}/books/${id}`);
-            setBook(response.data);
+            try {
+                const response = await axios.get(`${BASE_URL}/books/${id}`);
+                setBookData(response.data);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching the book data', error);
+                Swal.fire('Error!', 'Unable to fetch the book data.', 'error');
+            }
         };
-
         fetchBook();
     }, [id]);
+
+    // Handle input changes
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setBookData({
+            ...bookData,
+            [name]: value
+        });
+    };
 
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.put(`${BASE_URL}/books/${id}`, book);
-        // Optionally redirect or display a success message
-        setSuccessMessage('Book updated successfully!');
+        try {
+            // Sending a PATCH request to update the book data
+            await axios.patch(`${BASE_URL}/books/${id}`, bookData);
+            Swal.fire('Success!', 'Book details have been updated.', 'success');
+            navigate('/'); // Redirect to homepage or book list after successful edit
+        } catch (error) {
+            Swal.fire('Error!', 'Failed to update the book details.', 'error');
+        }
     };
 
-    // Handle input change
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setBook((prevBook) => ({
-            ...prevBook,
-            [name]: value,
-        }));
-    };
+    if (loading) {
+        return <p>Loading...</p>; // Show loading state while fetching data
+    }
 
     return (
-        <div className='edit'>
-        <div className="max-w-md mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4 text-white">Edit Book</h1>
-            <form onSubmit={handleSubmit} className="bg-white bg-opacity-30 backdrop-blur-md rounded-lg p-6 shadow-lg">
-    <div className="mb-4">
-        <label className="block text-gray-700">Title</label>
-        <input
-            type="text"
-            name="title"
-            value={book.title}
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded bg-transparent placeholder-gray-500"
-            required
-            placeholder="Enter book title"
-        />
-    </div>
-    <div className="mb-4">
-        <label className="block text-gray-700">Author</label>
-        <input
-            type="text"
-            name="author"
-            value={book.author}
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded bg-transparent placeholder-gray-500"
-            required
-            placeholder="Enter author's name"
-        />
-    </div>
-    <div className="mb-4">
-        <label className="block text-gray-700">Genre</label>
-        <input
-            type="text"
-            name="genre"
-            value={book.genre}
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded bg-transparent placeholder-gray-500"
-            placeholder="Enter book genre"
-        />
-    </div>
-    <div className="mb-4">
-        <label className="block text-gray-700">Description</label>
-        <textarea
-            name="description"
-            value={book.description}
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded bg-transparent placeholder-gray-500"
-            placeholder="Enter book description"
-        />
-    </div>
-    <div className="mb-4">
-        <label className="block text-gray-700">Publisher</label>
-        <input
-            type="text"
-            name="publisher"
-            value={book.publisher}
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded bg-transparent placeholder-gray-500"
-            placeholder="Enter publisher's name"
-        />
-    </div>
-    <div className="mb-4">
-        <label className="block text-gray-700">Year</label>
-        <input
-            type="text"
-            name="year"
-            value={book.year}
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded bg-transparent placeholder-gray-500"
-            placeholder="Enter publication year"
-        />
-    </div>
-    <button
-        type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300"
-    >
-        Save Changes
-    </button>
-</form>
+        <div className="max-w-md mx-auto mt-10">
+            <h1 className="text-2xl font-bold mb-6">Edit Book</h1>
+            <form onSubmit={handleSubmit}>
+                {/* Title */}
+                <div className="mb-4">
+                    <label className="block text-gray-700">Title</label>
+                    <input
+                        type="text"
+                        name="title"
+                        value={bookData.title}
+                        onChange={handleChange}
+                        className="w-full px-4 py-2 border rounded-md"
+                        required
+                    />
+                </div>
 
-        </div>
+                {/* Author */}
+                <div className="mb-4">
+                    <label className="block text-gray-700">Author</label>
+                    <input
+                        type="text"
+                        name="author"
+                        value={bookData.author}
+                        onChange={handleChange}
+                        className="w-full px-4 py-2 border rounded-md"
+                        required
+                    />
+                </div>
+
+                {/* Genre */}
+                <div className="mb-4">
+                    <label className="block text-gray-700">Genre</label>
+                    <input
+                        type="text"
+                        name="genre"
+                        value={bookData.genre}
+                        onChange={handleChange}
+                        className="w-full px-4 py-2 border rounded-md"
+                        required
+                    />
+                </div>
+
+                {/* Description */}
+                <div className="mb-4">
+                    <label className="block text-gray-700">Description</label>
+                    <textarea
+                        name="description"
+                        value={bookData.description}
+                        onChange={handleChange}
+                        className="w-full px-4 py-2 border rounded-md"
+                        required
+                    />
+                </div>
+
+                {/* Publisher */}
+                <div className="mb-4">
+                    <label className="block text-gray-700">Publisher</label>
+                    <input
+                        type="text"
+                        name="publisher"
+                        value={bookData.publisher}
+                        onChange={handleChange}
+                        className="w-full px-4 py-2 border rounded-md"
+                        required
+                    />
+                </div>
+
+                {/* Year */}
+                <div className="mb-4">
+                    <label className="block text-gray-700">Year</label>
+                    <input
+                        type="number"
+                        name="year"
+                        value={bookData.year}
+                        onChange={handleChange}
+                        className="w-full px-4 py-2 border rounded-md"
+                        required
+                    />
+                </div>
+
+                {/* Image URL */}
+                <div className="mb-4">
+                    <label className="block text-gray-700">Image URL</label>
+                    <input
+                        type="text"
+                        name="img_url"
+                        value={bookData.img_url}
+                        onChange={handleChange}
+                        className="w-full px-4 py-2 border rounded-md"
+                        required
+                    />
+                </div>
+
+                {/* Submit Button */}
+                <button
+                    type="submit"
+                    className="w-full bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors"
+                >
+                    Update Book
+                </button>
+            </form>
         </div>
     );
 };
