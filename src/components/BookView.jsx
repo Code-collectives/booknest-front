@@ -19,7 +19,7 @@ function BookView() {
   
   <div className="row2 mt-10">
     <h2 className="text-2xl font-bold mb-4 text-yellow-300">Find Your Book</h2>
-    <div className="flex items-center space-x-4">
+    {/* <div className="flex items-center space-x-4">
       <input
         type="text"
         placeholder="Enter your book"
@@ -28,7 +28,7 @@ function BookView() {
       <button className="px-4 py-2 bg-yellow-300 text-white rounded-md hover:bg-yellow-700">
         <CiSearch />
       </button>
-    </div>
+    </div> */}
   </div>
 
 

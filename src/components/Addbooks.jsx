@@ -115,9 +115,9 @@ const AddBooks = () => {
         </div>
 
         <div>
-          <label htmlFor="publisher-date" className="block text-lg font-semibold text-gray-700">Publisher Date</label>
+          <label htmlFor="publisher-date" className="block text-lg font-semibold text-gray-700">Year</label>
           <input
-            type="date"
+            type="year"
             id="publisher-date"
             name="publisher-date"
             className="mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
